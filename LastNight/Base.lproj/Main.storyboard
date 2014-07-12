@@ -19,31 +19,52 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgd-xf-RkW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Date" width="84" id="hmR-FY-AcR"/>
-                                    <barButtonItem title="Company" width="100" id="kiw-lR-yF1"/>
-                                    <barButtonItem title="Name" width="100" id="Suy-rx-FWN"/>
+                                    <barButtonItem title="Date" width="84" id="hmR-FY-AcR">
+                                        <connections>
+                                            <action selector="touchDateFilter:" destination="vXZ-lx-hvc" id="3vK-OY-1MN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Company" width="100" id="kiw-lR-yF1">
+                                        <connections>
+                                            <action selector="touchCompanyFilter:" destination="vXZ-lx-hvc" id="hfF-G1-wYG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Job" width="100" id="Suy-rx-FWN">
+                                        <connections>
+                                            <action selector="touchNameFilter:" destination="vXZ-lx-hvc" id="QJd-I3-KcS"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="24" width="320" height="44"/>
                                 </variation>
                             </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9bW-wf-SNP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="68" width="320" height="412"/>
+                                </variation>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Bgd-xf-RkW"/>
+                                <exclude reference="9bW-wf-SNP"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Bgd-xf-RkW"/>
+                                <include reference="9bW-wf-SNP"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439.5" y="343"/>
+            <point key="canvasLocation" x="261" y="362"/>
         </scene>
     </scenes>
 </document>
