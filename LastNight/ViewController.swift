@@ -11,10 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView
-    let contacts = []
                             
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("View did load")
+        var contacts = AddressBookWrapper.getContacts()
+        println("Passed contacts")
         // Do any additional setup after loading the view, typically from a nib.
     }
 

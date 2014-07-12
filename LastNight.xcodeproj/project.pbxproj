@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		432B94511971F34F00F0CE00 /* AddressBookWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 432B94501971F34F00F0CE00 /* AddressBookWrapper.m */; };
 		43CC2C621971D0FA00B9E71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC2C611971D0FA00B9E71E /* AppDelegate.swift */; };
 		43CC2C641971D0FA00B9E71E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC2C631971D0FA00B9E71E /* ViewController.swift */; };
 		43CC2C671971D0FA00B9E71E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CC2C651971D0FA00B9E71E /* Main.storyboard */; };
@@ -25,6 +26,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		432B944E1971F34E00F0CE00 /* LastNight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LastNight-Bridging-Header.h"; sourceTree = "<group>"; };
+		432B944F1971F34F00F0CE00 /* AddressBookWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookWrapper.h; sourceTree = "<group>"; };
+		432B94501971F34F00F0CE00 /* AddressBookWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookWrapper.m; sourceTree = "<group>"; };
 		43CC2C5C1971D0FA00B9E71E /* LastNight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastNight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CC2C601971D0FA00B9E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CC2C611971D0FA00B9E71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +82,11 @@
 				43CC2C611971D0FA00B9E71E /* AppDelegate.swift */,
 				43CC2C631971D0FA00B9E71E /* ViewController.swift */,
 				43CC2C651971D0FA00B9E71E /* Main.storyboard */,
+				432B944F1971F34F00F0CE00 /* AddressBookWrapper.h */,
+				432B94501971F34F00F0CE00 /* AddressBookWrapper.m */,
 				43CC2C681971D0FA00B9E71E /* Images.xcassets */,
 				43CC2C5F1971D0FA00B9E71E /* Supporting Files */,
+				432B944E1971F34E00F0CE00 /* LastNight-Bridging-Header.h */,
 			);
 			path = LastNight;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432B94511971F34F00F0CE00 /* AddressBookWrapper.m in Sources */,
 				43CC2C641971D0FA00B9E71E /* ViewController.swift in Sources */,
 				43CC2C621971D0FA00B9E71E /* AppDelegate.swift in Sources */,
 			);
@@ -325,9 +333,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LastNight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LastNight/LastNight-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -336,9 +347,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LastNight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LastNight/LastNight-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -395,6 +408,7 @@
 				43CC2C7A1971D0FA00B9E71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43CC2C7B1971D0FA00B9E71E /* Build configuration list for PBXNativeTarget "LastNightTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +417,7 @@
 				43CC2C7D1971D0FA00B9E71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
