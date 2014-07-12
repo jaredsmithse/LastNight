@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    var tableView: UITableView 
+    @IBOutlet var tableView: UITableView
     let contacts = []
                             
     override func viewDidLoad() {
@@ -24,14 +24,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchDateFilter(sender: UIBarButtonItem) {
+        println("we are filtering by date")
 //        contacts.sort({ $0.kABPersonCreationDateProperty > $1.kABPersonCreationDateProperty })
     }
     
     @IBAction func touchCompanyFilter(sender: UIBarButtonItem) {
+        println("we are filtering by company")
 //        contacts.sort({ $0.kABPersonOrganizationProperty > $1.kABPersonOrganizationProperty })
     }
 
     @IBAction func touchJobFilter(sender: UIBarButtonItem) {
+        println("we are filtering by job")
 //        contacts.sort({ $0.kABPersonJobTitleProperty > $1.kABPersonJobTitleProperty })
     }
     
