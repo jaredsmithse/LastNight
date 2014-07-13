@@ -21,17 +21,17 @@
                                 <items>
                                     <barButtonItem title="Date" width="84" id="hmR-FY-AcR">
                                         <connections>
-                                            <action selector="touchDateFilter:" destination="vXZ-lx-hvc" id="3vK-OY-1MN"/>
+                                            <action selector="touchFilterButton:" destination="vXZ-lx-hvc" id="PA0-np-6G9"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Company" width="100" id="kiw-lR-yF1">
                                         <connections>
-                                            <action selector="touchCompanyFilter:" destination="vXZ-lx-hvc" id="hfF-G1-wYG"/>
+                                            <action selector="touchFilterButton:" destination="vXZ-lx-hvc" id="Fnj-Xy-OHM"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Job" width="100" id="Suy-rx-FWN">
                                         <connections>
-                                            <action selector="touchJobFilter:" destination="vXZ-lx-hvc" id="cp1-8y-kyk"/>
+                                            <action selector="touchFilterButton:" destination="vXZ-lx-hvc" id="bjO-e3-CYV"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
