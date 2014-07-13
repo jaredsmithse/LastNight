@@ -11,10 +11,10 @@
 
 @interface AddressBookWrapper : NSObject
 
-@property (nonatomic, readonly) ABAddressBookRef *addressBook;
-@property (strong, nonatomic) NSArray *contacts;
-
-- (id)initWithAddressBook: (ABAddressBookRef *)addressBook;
-+ (NSArray *)getContacts;
+//@property (nonatomic, readonly) ABAddressBookRef *addressBook;
+//@property (strong, nonatomic) NSArray *contacts;
+//
+//- (id)initWithAddressBook: (ABAddressBookRef *)addressBook;
++(NSArray *)getContactsForSearchType: (NSString *)type;
 
 @end

@@ -14,9 +14,12 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("View did load")
-        var contacts = AddressBookWrapper.getContacts()
-        println("Passed contacts")
+        var contacts = AddressBookWrapper.getContactsForSearchType("Date")
+        
+        for info in contacts {
+            println("Info: \(info)")
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
