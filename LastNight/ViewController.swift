@@ -10,23 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var tableView: UITableView
-                            
+    var tableView: ContactListViewController? = nil
+    var contacts = AddressBookWrapper.getContactsForSearchType()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var contacts = AddressBookWrapper.getContactsForSearchType("Date")
-        
-        for info in contacts {
-            println("Info: \(info)")
+        if let controllers = self.childViewControllers {
+            self.tableView = controllers[controllers.endIndex-1].topViewController as? ContactListViewController
         }
+
+        println("\(self.childViewControllers.count)")
+//        for info in contacts {
+//            println("Info: \(info)")
+//        }
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func touchFilterButton(sender: UIBarButtonItem){
         let title = sender.title
@@ -44,10 +43,7 @@ class ViewController: UIViewController {
             println("button not recognized")
         }
     }
-    
-    func updateUI() {
-        //reload the contacts
-    }
+
     
 }
 

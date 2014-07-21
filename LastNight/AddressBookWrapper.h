@@ -15,6 +15,6 @@
 //@property (strong, nonatomic) NSArray *contacts;
 //
 //- (id)initWithAddressBook: (ABAddressBookRef *)addressBook;
-+(NSArray *)getContactsForSearchType: (NSString *)type;
++(NSArray *)getContactsForSearchType;
 
 @end

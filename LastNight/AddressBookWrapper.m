@@ -11,162 +11,45 @@
 
 @implementation AddressBookWrapper
 
-//- (id)initWithAddressBook: (ABAddressBookRef *)addressBook
-//{
-//    self = [super init];
-//    if(self) {
-//        _addressBook = addressBook;
-//    }
-//    return self;
-//}
-
-//- (NSArray *)contacts
-//{
-//    if (!_contacts) {
-//        _contacts = self.getContacts;
-//    }
-//    
-//    return _contacts;
-//}
-
-+(NSArray *)getContactsForSearchType: (NSString *)type
++(NSArray *)getContactsForSearchType
 {
     NSMutableArray* info = [[NSMutableArray alloc] init];
     
-    NSLog(@"Called!!");
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusDenied ||
         ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusRestricted){
         NSLog(@"Denied");
-    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized)
-    {
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized){
         NSLog(@"Authorized");
-        CFErrorRef *error = NULL;
+        CFErrorRef *error            = NULL;
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-        CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-        CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+        CFArrayRef allPeople         = ABAddressBookCopyArrayOfAllPeople(addressBook);
+        CFIndex numberOfPeople       = ABAddressBookGetPersonCount(addressBook);
         
-        if ( 'Date' )
+        for(int i = 0; i < numberOfPeople; i++)
         {
-            NSString *dateString = [[NSString alloc] init];
+            ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
             
-            for(int i = 0; i < numberOfPeople; i++)
-            {
-                ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-                ABMultiValueRef dates = ABRecordCopyValue(person, kABPersonCreationDateProperty);
-                
-                for (CFIndex i = 0; i < ABMultiValueGetCount(dates); i++)
-                {
-                    NSString *date = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(dates, i);
-                    
-                    [info addObject: [dateString stringByAppendingFormat: @":%@",date]];
-                    // NSLog(@"Addressbook Date: %@", date);
-                }
+            ABMultiValueRef name = ABRecordCopyValue(person, kABPersonFirstNameProperty);
+            // TODO: This still needs to be put into the return data type, should lookup 3 element tuples for objC
+//            ABMultiValueRef createdAtDate = ABRecordCopyValue(person, kABPersonCreationDateProperty);
+            if (name != nil) {
+                [info addObject:(__bridge_transfer NSString *)(name)];
             }
-            
-            return [NSArray arrayWithArray:info];
-        } else if ( 'Company' )
-        {
-            NSString *companyString = [[NSString alloc] init];
-            
-            for(int i = 0; i < numberOfPeople; i++)
-            {
-                ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-                ABMultiValueRef companies = ABRecordCopyValue(person, kABPersonOrganizationProperty);
-                
-                for (CFIndex i = 0; i < ABMultiValueGetCount(companies); i++)
-                {
-                    NSString *company = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(companies, i);
-                    
-                    [info addObject: [companyString stringByAppendingFormat: @":%@",company]];
-                    // NSLog(@"Addressbook Company: %@", company);
-                }
+        }
+        
+        return [NSArray arrayWithArray:info];
+    } else{ //ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined
+        ABAddressBookRequestAccessWithCompletion(ABAddressBookCreateWithOptions(NULL, nil), ^(bool granted, CFErrorRef error) {
+            if (!granted){
+                NSLog(@"Just denied");
+                return;
             }
-            
-            return [NSArray arrayWithArray:info];
-        } else if ( 'Job' )
-        {
-            NSString *jobString = [[NSString alloc] init];
-            
-            for(int i = 0; i < numberOfPeople; i++)
-            {
-                ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-                ABMultiValueRef jobs = ABRecordCopyValue(person, kABPersonJobTitleProperty);
-                
-                for (CFIndex i = 0; i < ABMultiValueGetCount(jobs); i++)
-                {
-                    NSString *job = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(jobs, i);
-                    
-                    [info addObject: [jobString stringByAppendingFormat: @":%@",job]];
-                    // NSLog(@"Addressbook Job: %@", job);
-                }
-            }
-            
-            return [NSArray arrayWithArray:info];
+            NSLog(@"Just authorized");
+        });
+        NSLog(@"Not determined");
     }
-}
-
-@end
-//    else
-//    {
-
-//        ABAddressBookRequestAccessWithCompletion(ABAddressBookCreateWithOptions(NULL, nil), ^(bool granted, CFErrorRef error)
-//        {
-//            if (!granted){
-//                
-//                NSLog(@"Just denied");
-//                return;
-//            }
-//            
-//            // ------------------
-//            
-//            ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
-//            
-//            if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
-//            {
-//                ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-//                    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
-//                });
-//            }
-//            else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized)
-//            {
-//                
-//                CFErrorRef *error = NULL;
-//                ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
-//                CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-//                CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
-//                NSString *addressBookNum = [[NSString alloc] init];
-//                
-//                for(int i = 0; i < numberOfPeople; i++) {
-//                    
-//                    ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
-//                    
-//                    // NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-//                    // NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
-//                    // NSLog(@"Name:%@ %@", firstName, lastName);
-//                    
-//                    ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
-//                    [[UIDevice currentDevice] name];
-//                    
-//                    //NSLog(@"\n%@\n", [[UIDevice currentDevice] name]);
-//                    
-//                    for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
-//                        NSString *phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-//                        
-//                        addressBookNum = [addressBookNum stringByAppendingFormat: @":%@",phoneNumber];
-//                        NSLog(@"AddressbookNum: %@", addressBookNum);
-//                    }  
-//                }
-//                NSLog(@"AllNumber:%@", addressBookNum);
-//            }
-//            
-//            // -----------
-//            NSLog(@"Just authorized");
-//        });
-//        
-//        NSLog(@"Not determined");
-//    }
+    return info;
     
-//    return @[];
 }
 
 @end

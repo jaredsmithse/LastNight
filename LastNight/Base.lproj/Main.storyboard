@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
@@ -41,36 +41,73 @@
                                 <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="24" width="320" height="45"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="24" width="320" height="44"/>
+                                </variation>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9bW-wf-SNP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOG-Zr-wRo">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="68" width="320" height="412"/>
                                 </variation>
-                            </tableView>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="68" width="320" height="503"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="bsi-Zb-PzR" kind="embed" identifier="contactList" id="7U9-Q5-eVU"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Bgd-xf-RkW"/>
-                                <exclude reference="9bW-wf-SNP"/>
+                                <exclude reference="BOG-Zr-wRo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Bgd-xf-RkW"/>
-                                <include reference="9bW-wf-SNP"/>
+                                <include reference="BOG-Zr-wRo"/>
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="9bW-wf-SNP" id="o1T-wD-f4K"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="261" y="362"/>
+            <point key="canvasLocation" x="261" y="361.5"/>
+        </scene>
+        <!--Contact List View Controller-->
+        <scene sceneID="W7C-Kf-sn1">
+            <objects>
+                <tableViewController id="bsi-Zb-PzR" customClass="ContactListViewController" customModule="LastNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8Ft-sw-PLy">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="HdZ-vE-Rb8">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HdZ-vE-Rb8" id="LFQ-Qe-Wfb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="412"/>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="503"/>
+                        </variation>
+                        <connections>
+                            <outlet property="dataSource" destination="bsi-Zb-PzR" id="nUM-Je-8Ou"/>
+                            <outlet property="delegate" destination="bsi-Zb-PzR" id="Mmw-gn-re2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VjY-7s-HKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003.5" y="362"/>
         </scene>
     </scenes>
 </document>
