@@ -13,6 +13,7 @@
 		43CC2C671971D0FA00B9E71E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CC2C651971D0FA00B9E71E /* Main.storyboard */; };
 		43CC2C691971D0FA00B9E71E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CC2C681971D0FA00B9E71E /* Images.xcassets */; };
 		43CC2C751971D0FA00B9E71E /* LastNightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC2C741971D0FA00B9E71E /* LastNightTests.swift */; };
+		7F5B91E7197DD59D00DEF011 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B91E6197DD59D00DEF011 /* Contact.swift */; };
 		7FA406CD197764F9009615A7 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA406CC197764F9009615A7 /* ContactListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		43CC2C6E1971D0FA00B9E71E /* LastNightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastNightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CC2C731971D0FA00B9E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CC2C741971D0FA00B9E71E /* LastNightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastNightTests.swift; sourceTree = "<group>"; };
+		7F5B91E6197DD59D00DEF011 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		7FA406CC197764F9009615A7 /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 		43CC2C531971D0FA00B9E71E = {
 			isa = PBXGroup;
 			children = (
+				7F5B91E6197DD59D00DEF011 /* Contact.swift */,
 				43CC2C5E1971D0FA00B9E71E /* LastNight */,
 				43CC2C711971D0FA00B9E71E /* LastNightTests */,
 				43CC2C5D1971D0FA00B9E71E /* Products */,
@@ -220,6 +223,7 @@
 			files = (
 				432B94511971F34F00F0CE00 /* AddressBookWrapper.m in Sources */,
 				7FA406CD197764F9009615A7 /* ContactListViewController.swift in Sources */,
+				7F5B91E7197DD59D00DEF011 /* Contact.swift in Sources */,
 				43CC2C641971D0FA00B9E71E /* ViewController.swift in Sources */,
 				43CC2C621971D0FA00B9E71E /* AppDelegate.swift in Sources */,
 			);

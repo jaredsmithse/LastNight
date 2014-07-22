@@ -10,19 +10,20 @@ import UIKit
 
 class ContactListViewController: UITableViewController {
     
-    var contacts = [String]()
+    var contacts = [Contact]()
     
     
     override func viewDidLoad() {
         let retreivedContacts = AddressBookWrapper.getContactsForSearchType()
         super.viewDidLoad()
         for contact in retreivedContacts {
-            contacts.append(contact as NSString)
+            var newContact = Contact(firstName: contact[0] as String, lastName: contact[1] as String, createdAt: contact[2] as NSDate)
+            contacts.append(newContact)
         }
         updateUI()
     }
     
-    func updateContacts(newContacts: [String]) {
+    func updateContacts(newContacts: [Contact]) {
         self.contacts = newContacts
         self.tableView.reloadData()
     }
@@ -47,7 +48,7 @@ class ContactListViewController: UITableViewController {
         
         let contact = contacts[indexPath.row]
 //        cell.textLabel.text = contact.description
-        cell.textLabel.text = contact
+        cell.textLabel.text = contact.fullName()
         return cell
     }
     

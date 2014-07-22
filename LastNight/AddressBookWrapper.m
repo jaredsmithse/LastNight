@@ -13,6 +13,10 @@
 
 +(NSArray *)getContactsForSearchType
 {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    
     NSMutableArray* info = [[NSMutableArray alloc] init];
     
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusDenied ||
@@ -29,11 +33,17 @@
         {
             ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
             
-            ABMultiValueRef name = ABRecordCopyValue(person, kABPersonFirstNameProperty);
-            // TODO: This still needs to be put into the return data type, should lookup 3 element tuples for objC
-//            ABMultiValueRef createdAtDate = ABRecordCopyValue(person, kABPersonCreationDateProperty);
-            if (name != nil) {
-                [info addObject:(__bridge_transfer NSString *)(name)];
+            NSString* firstName = (__bridge NSString*) ABRecordCopyValue( person, kABPersonFirstNameProperty );
+            NSString* lastName = (__bridge NSString* ) ABRecordCopyValue( person, kABPersonLastNameProperty );
+            NSDate* createDate = (__bridge NSDate*) ABRecordCopyValue( person, kABPersonCreationDateProperty );
+            NSString* formattedDate = [dateFormatter stringFromDate:createDate];
+
+            
+            if (firstName != nil) {
+                if (lastName != nil) {
+                    NSArray *personInfo = @[firstName, lastName, createDate];
+                    [info addObject:personInfo];
+                }
             }
         }
         
